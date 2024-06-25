@@ -1,10 +1,29 @@
 package handler
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"fiber-go/database"
+	"fiber-go/model/entity"
+	"fmt"
 
-func ReadUserHandler(c *fiber.Ctx) error {
+	"github.com/gofiber/fiber/v2"
+)
 
-		return c.JSON(fiber.Map{
-			"data":"user",
-		})
-}    
+func ReadAllUserndler(c *fiber.Ctx) error {
+	var users []entity.User
+	result := database.DB.Find(&users)
+
+	if result.Error != nil {
+		fmt.Println(result.Error)
+	}
+	
+	// err := database.DB.Find(&users).Error
+
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	return c.JSON(users)
+}
+
+func Handler(c *fiber.Ctx) error {
+	return c.SendString("Hello Bang")
+}

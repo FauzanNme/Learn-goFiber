@@ -8,13 +8,11 @@ import (
 
 func RouteInit(r *fiber.App) {
 	// PATH
-	// nama c karo r bebas
-	r.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello World")
-	})
-	r.Get("/user", handler.ReadUserHandler)
+	r.Get("/", handler.Handler)
+	r.Get("/user", handler.ReadAllUserndler)
 
 	// Bentuk JSON
+	// //nama ctx bebas
 	// r.Get("/", func(ctx *fiber.Ctx) error {
 	// 	return ctx.JSON(fiber.Map{
 	// 		"hello": "world",

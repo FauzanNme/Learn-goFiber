@@ -7,6 +7,7 @@ import (
 		"gorm.io/gorm"	
 )
 
+// global variabel
 var DB *gorm.DB
 
 func DatabaseInit() {
